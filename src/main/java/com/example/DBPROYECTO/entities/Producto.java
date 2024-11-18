@@ -29,12 +29,13 @@ public class Producto {
 
     private String imageURL;
 
+    private Integer stock;
 
 
     public Producto() {
     }
 
-    public Producto(Long id, String nombre, Double precio, String descripcion, Long codigo, Proveedor proveedor, TipoProducto tipoProducto, Boolean disponible, String imageURL) {
+    public Producto(Long id, String nombre, Double precio, String descripcion, Long codigo, Proveedor proveedor, TipoProducto tipoProducto, Boolean disponible, String imageURL, Integer stock) {
         this.id = id;
         this.nombre = nombre;
         this.precio = precio;
@@ -44,6 +45,7 @@ public class Producto {
         this.tipoProducto = tipoProducto;
         this.disponible = disponible;
         this.imageURL = imageURL;
+        this.stock = stock;
     }
 
     public Long getId() {
@@ -118,18 +120,11 @@ public class Producto {
         this.imageURL = imageURL;
     }
 
-    @Override
-    public String toString() {
-        return "Producto{" +
-                "id=" + id +
-                ", nombre='" + nombre + '\'' +
-                ", precio=" + precio +
-                ", descripcion='" + descripcion + '\'' +
-                ", codigo=" + codigo +
-                ", proveedor=" + proveedor +
-                ", tipoProducto=" + tipoProducto +
-                ", disponible=" + disponible +
-                ", imageURL='" + imageURL + '\'' +
-                '}';
+    public Integer getStock() {
+        return stock;
+    }
+
+    public void setStock(Integer stock) {
+        this.stock = stock;
     }
 }

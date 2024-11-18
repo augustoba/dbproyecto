@@ -12,10 +12,10 @@ public class Factura {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
-    @NotNull
+
     private Boolean pagado;
     private Date fecha;
-    @NotNull
+
     private Double total;
     @ManyToOne
     @JoinColumn(name = "tipo_factura_id", nullable = false)
@@ -35,8 +35,6 @@ public class Factura {
             inverseJoinColumns = @JoinColumn(name = "producto_id")
     )
     private List<Producto> productos;
-
-
 
     public Factura() {
     }

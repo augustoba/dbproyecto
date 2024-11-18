@@ -16,16 +16,14 @@ public class ProveedorServiceImpl implements ProveedorService {
     private ProveedorRepository proveedorRepository;
 
     @Override
-    public Boolean createProvider(Proveedor proveedor){
-
-        Proveedor proveAux;
-        proveAux=proveedorRepository.findByCuit(proveedor.getCuit());
-        if ( proveAux == null){
-            proveedorRepository.save(proveedor) ;
-            return Boolean.TRUE;
-        }else {
-            return Boolean.FALSE;
+    public Proveedor createProveedor(Proveedor proveedor){
+        Proveedor proveedorAux ;
+        proveedorAux=proveedorRepository.findByCuit(proveedor.getCuit());
+        if ( proveedorAux != null){
+         throw new RuntimeException("El proveedor ya existe con este cuit : " +  proveedor.getCuit());
         }
+     return  proveedorRepository.save(proveedor) ;
+
 
     }
     @Override
@@ -37,6 +35,5 @@ public class ProveedorServiceImpl implements ProveedorService {
     public Optional<Proveedor> findById(Long id){
         return  proveedorRepository.findById(id);
     }
-
 
 }

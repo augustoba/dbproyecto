@@ -4,10 +4,7 @@ import jakarta.persistence.Entity;
 import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
-import jakarta.validation.constraints.Email;
-import jakarta.validation.constraints.NotNull;
-import jakarta.validation.constraints.Pattern;
-import jakarta.validation.constraints.Size;
+import jakarta.validation.constraints.*;
 
 
 @Entity
@@ -15,7 +12,8 @@ public class Proveedor {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
-    @Pattern(regexp = "\\d+", message = "El campo CUIT solo debe contener números")
+    @Min(value = 10000000000L, message = "El CUIT debe ser como mínimo de 11 dígitos.")
+    @Max(value = 99999999999L, message = "El CUIT no puede exceder los 11 dígitos.")
     private Long cuit;
     @Size(min = 4, max = 30, message = "Debe ingresar un mínimo de 4 caracteres y máximo 30 para el campo NOMBRE")
     private String nombre;

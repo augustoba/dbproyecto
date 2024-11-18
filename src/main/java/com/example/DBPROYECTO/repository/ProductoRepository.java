@@ -12,8 +12,8 @@ import java.util.List;
 public interface ProductoRepository extends JpaRepository<Producto,Long> {
 
    List<Producto> findByNombre(String nombre);
-   @Query("SELECT p FROM Producto p WHERE p.codigo = :codigo")
-   Producto findByCodigo(String codigo);
+   @Query("SELECT p FROM Producto p WHERE p.codigo = :codigo AND p.stock > 0")
+   Producto findByCodigo(Long codigo);
 
    @Query("SELECT p FROM Producto p WHERE p.proveedor.nombre = :nombre")
    List<Producto> findByProveedor_Nombre(String nombre);

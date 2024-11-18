@@ -13,4 +13,6 @@ public interface ClienteService {
     Optional<Cliente> findById(Long id);
 
     Cliente findByNameAndLastName(String nombre, String apellido);
+
+    Cliente findByCuit(String cuit);
 }

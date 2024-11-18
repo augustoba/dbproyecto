@@ -30,15 +30,15 @@ public class ClienteController {
     @PostMapping("/create")
     public ResponseEntity <Object> createCliente(@Valid @RequestBody ClienteRequest clienteRequest, BindingResult result){
 
-
+        if (result.hasErrors()) {
+            return ResponseEntity.status(HttpStatus.BAD_REQUEST).body(respuestaErrorValid(result));
+        }
 
         if (clienteService.findByNameAndLastName(clienteRequest.getNombre(),clienteRequest.getApellido())!=null) {
 
             return ResponseEntity.status(HttpStatus.BAD_REQUEST).body(errorRespuesta("El cliente ya existe en la base de datos.",HttpStatus.BAD_REQUEST));
         }
-        if (result.hasErrors()) {
-            return ResponseEntity.status(HttpStatus.BAD_REQUEST).body(respuestaErrorValid(result));
-        }
+
         try {
 
             clienteService.createClient(ClienteMapper.INSTANCE.toEntity(clienteRequest));

@@ -41,6 +41,10 @@ public class ClienteServiceImpl implements ClienteService {
     public Cliente findByNameAndLastName(String nombre, String apellido){
         return clienteRepository.findByNombreAndApellido(nombre,apellido);
     }
+    @Override
+    public Cliente findByCuit(String cuit){
+        return clienteRepository.findByCuit(cuit);
+    }
 
 
 }
